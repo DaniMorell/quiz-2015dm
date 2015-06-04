@@ -8,8 +8,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.param('quizId', quizController.load);  // autoload :quizId
-//router.param('search', quizController.load);  // autoload :search
+//router.param('search', quizController.index);  // autoload :search
 
+//router.get('/quizes/:search(\\d+)',                      quizController.index);
 router.get('/quizes',                      quizController.index);
 router.get('/quizes/:quizId(\\d+)',        quizController.show);
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);

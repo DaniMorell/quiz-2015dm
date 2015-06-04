@@ -4,6 +4,17 @@
       <td><a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>	  
     </tr> 
   <% } %>
+  
+  <br>
+  
+  <form method="get" action="/quizes">        
+	<input type="text" name="search"/>
+	<input type="submit" value="Buscar">
+</form>
 </table>
+
+
+
+
 
 
