@@ -2,7 +2,7 @@ var models = require('../models/models.js');
 
 // Autoload :id
 exports.load = function(req, res, next, quizId) {
-  models.Quiz.find(quizId).then(
+  models.Quiz.findById(quizId).then(
 	function(quiz) {
       if (quiz) {
         req.quiz = quiz;
@@ -14,8 +14,8 @@ exports.load = function(req, res, next, quizId) {
 
 // GET /quizes
 // GET /users/:userId/quizes
-exports.index = function(req, res, search) {  
-  models.Quiz.findAll({where: ["pregunta like ?", search]}).then(
+exports.index = function(req, res) {  
+  models.Quiz.findAll().then(
     function(quizes) {
       res.render('quizes/index.ejs', {quizes: quizes});
     }
