@@ -1,7 +1,18 @@
 <table>
   <% var i; for (i=0; i < quizes.length; i++) { %>        
     <tr>
-      <td><a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>      
+      <td><a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>	  
     </tr> 
   <% } %>
+</table>
+
+<table>
+	<tr>
+		<td>
+		 <form method="get" action="/quizes?search<%= texto_a_buscar %>">        
+		  <input type="text" name="texto_a_buscar" value="texto_a_buscar"/>
+		  <input type="submit" value="Buscar">
+		</form>
+	  </td>
+	</tr>
 </table>

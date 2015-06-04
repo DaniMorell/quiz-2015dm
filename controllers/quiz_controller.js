@@ -14,8 +14,8 @@ exports.load = function(req, res, next, quizId) {
 
 // GET /quizes
 // GET /users/:userId/quizes
-exports.index = function(req, res) {  
-  models.Quiz.findAll(options).then(
+exports.index = function(req, res, search) {  
+  models.Quiz.findAll({where: ["pregunta like ?", search]}).then(
     function(quizes) {
       res.render('quizes/index.ejs', {quizes: quizes});
     }
