@@ -48,6 +48,32 @@ app.use(function(req, res, next) {
   next();
 });
 
+
+//Tiempo session
+app.use(function(req, res, next) {
+  
+  if (req.session.user!=null) {
+
+    var d = new Date();
+    
+    if (req.session.tiempo!=null) {
+      var tiempotranscurrido= (d.getTime() - req.session.tiempo) / 1000 ;
+      if(tiempotranscurrido>120){
+        //logout
+        delete req.session.user;
+        res.redirect("/Login"); // redirect a path anterior a login
+      }
+    }    
+
+    //inicializamo el tiempo de accion
+    req.session.tiempo = d.getTime();
+
+  }
+  
+  next();
+});
+
+
 app.use('/', routes);
 // app.use('/users', users);
 
